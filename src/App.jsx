@@ -1,11 +1,14 @@
 // DO NOT DELETE
 
-import { useState } from 'react' // useStateを使うのに必要
 import './App.css'
-
+import Header from './Header.jsx'
+import Description from './Description.jsx'
+import DogListContainer from './DogListContainer.jsx'
+import { useState } from 'react' // useStateを使うのに必要
 /**
  * @type {() => JSX.Element}
  */
+
 export const App = () => {
   const url = 'https://dog.ceo/api/breeds/image/random'
   async function getImage() {
@@ -30,14 +33,12 @@ export const App = () => {
     setdogUrl(image.message)
   }
 
+  console.log(Header)
   return (
     <div>
-      <header className="header">
-        <h1>Dogアプリ</h1>
-      </header>
-      <button onClick={handleClick}>更新</button>
-      <p>犬の画像を表示するアプリです</p>
-      <img src={dogURL} alt="dog" />
+      <Header />
+      <Description handleClick={handleClick} url={dogURL} />
+      <DogListContainer />
     </div>
   )
 }
